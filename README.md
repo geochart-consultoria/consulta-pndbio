@@ -69,78 +69,6 @@ Dashboard interativo desenvolvido para análise e visualização dos dados da **
 - Expansão sob demanda para visualizar todos os dados
 - Interface intuitiva com contadores de itens restantes
 
-## 🔧 Arquitetura Técnica
-
-### Estrutura de Arquivos
-```
-/
-├── index.html              # Página principal
-├── styles-consolidated.css # Estilos consolidados
-├── script-consolidated.js  # Lógica JavaScript
-├── consulta_pndbio_data.json # Base de dados (575 registros)
-└── README.md              # Documentação
-```
-
-### Processamento de Dados
-
-#### 1. **Carregamento**
-- Fetch assíncrono com cache busting
-- Tratamento de erros robusto
-- Validação de integridade dos dados
-
-#### 2. **Processamento**
-- Limpeza e normalização de dados
-- Agregação por diferentes critérios
-- Cálculo de estatísticas descritivas
-
-#### 3. **Visualização**
-- Renderização dinâmica de componentes
-- Animações suaves para transições
-- Responsividade automática
-
-### Otimizações Implementadas
-
-#### Performance
-- Carregamento lazy de componentes pesados
-- Debounce em redimensionamentos
-- Reutilização de elementos DOM
-
-#### Experiência do Usuário
-- Animações de contadores
-- Tooltips informativos
-- Estados de loading
-- Feedback visual consistente
-
-#### Responsividade
-- CSS Grid adaptativo
-- Breakpoints otimizados
-- Componentes flexíveis
-
-## 📱 Design Responsivo
-
-### Breakpoints
-- **Desktop**: > 1024px - Layout completo com grid 2x2
-- **Tablet**: 768px - 1024px - Adaptação de espaçamentos
-- **Mobile**: < 768px - Layout em coluna única
-
-### Componentes Adaptativos
-- Cards de estatísticas empilháveis
-- Gráficos redimensionáveis automaticamente
-- Nuvem de palavras responsiva
-
-## 🎨 Identidade Visual
-
-### Paleta de Cores
-- **Verde Esmeralda**: #0b6d65 (primária)
-- **Beige Claro**: #f8f6f0 (fundo)
-- **Branco**: #ffffff (cards e seções)
-- **Cinza**: #666666 (textos secundários)
-
-### Tipografia
-- **Família**: Inter (sans-serif)
-- **Hierarquia**: Títulos em bold, textos em regular
-- **Tamanhos**: Sistema escalável de 0.9em a 2em
-
 ## 📈 Insights dos Dados
 
 ### Participação
@@ -158,41 +86,6 @@ Dashboard interativo desenvolvido para análise e visualização dos dados da **
 - Picos de participação identificáveis
 - Engajamento consistente ao longo do tempo
 
-## 🚀 Implementação e Deploy
-
-### Requisitos
-- Navegador moderno com suporte a ES6+
-- Conexão com internet (para CDNs das bibliotecas)
-- Servidor web para servir arquivos estáticos
-
-### Instalação Local
-```bash
-# Clonar ou baixar os arquivos
-# Servir através de servidor HTTP local
-python -m http.server 8000
-# ou
-npx serve .
-```
-
-### Deploy
-- Compatível com GitHub Pages
-- Hospedagem em qualquer servidor estático
-- CDN-friendly para distribuição global
-
-## 🔍 Próximas Melhorias
-
-### Funcionalidades
-- [ ] Filtros por período/instituição
-- [ ] Export de dados em diferentes formatos
-- [ ] Busca textual nas contribuições
-- [ ] Comparações temporais avançadas
-
-### Técnicas
-- [ ] Progressive Web App (PWA)
-- [ ] Lazy loading de dados
-- [ ] Cache offline
-- [ ] Testes automatizados
-
 ## 📞 Contato e Contribuições
 
 Este projeto foi desenvolvido como parte da consultoria  "Consulta Pública do PNDBio" junto a ONG - Coalizão Brasil Clima, Florestas e Agricultura, e não deve ser replicado.
@@ -204,4 +97,5 @@ Email para contato: victoraraujopw@gmail.com
 **Tecnologias**: HTML5, CSS3, JavaScript, Chart.js, WordCloud2.js  
 **Dados**: 575 contribuições da Consulta Pública PNDBio  
 **Tipo**: Dashboard de análise de dados públicos
+
 
