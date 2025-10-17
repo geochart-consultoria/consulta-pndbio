@@ -2,7 +2,7 @@
 
 ## 📋 Descrição do Projeto
 
-Dashboard interativo desenvolvido para análise e visualização dos dados da **Consulta Pública do Plano Nacional de Desenvolvimento da Bioeconomia (PNDBio)**. O projeto processa e apresenta de forma visual e intuitiva as **575 contribuições** recebidas durante o processo de consulta pública.
+Dashboard interativo desenvolvido para análise e visualização dos dados da **Consulta Pública do Plano Nacional de Desenvolvimento da Bioeconomia (PNDBio)**. O projeto processa e apresenta de forma visual e intuitiva as **576 contribuições** recebidas durante o processo de consulta pública.
 
 ## 🎯 Objetivos
 
@@ -32,7 +32,7 @@ Dashboard interativo desenvolvido para análise e visualização dos dados da **
 ## 📊 Funcionalidades Principais
 
 ### 1. **Estatísticas Gerais**
-- Total de contribuições (575)
+- Total de contribuições (576)
 - Período de consulta
 - Número de instituições participantes
 - Contadores animados para melhor experiência visual
@@ -195,10 +195,13 @@ npx serve .
 
 ## 📞 Contato e Contribuições
 
-Este projeto foi desenvolvido como parte da análise da Consulta Pública do PNDBio, visando democratizar o acesso aos dados e facilitar a compreensão das contribuições recebidas.
+Este projeto foi desenvolvido como parte da consultoria  "Consulta Pública do PNDBio" junto a ONG - Coalizão Brasil Clima, Florestas e Agricultura, e não deve ser replicado.
+
+Email para contato: victoraraujopw@gmail.com
 
 ---
 
 **Tecnologias**: HTML5, CSS3, JavaScript, Chart.js, WordCloud2.js  
 **Dados**: 575 contribuições da Consulta Pública PNDBio  
 **Tipo**: Dashboard de análise de dados públicos
+
