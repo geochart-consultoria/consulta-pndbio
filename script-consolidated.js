@@ -404,7 +404,7 @@ function createTimelineChart(timelineData) {
 }
 
 function createInstitutionChart(institutionData) {
-    console.log('🔄 Criando gráfico de instituições colaboradoras...');
+    console.log('🔄 Criando gráfico de colaborações coletivas...');
     
     const ctx = document.getElementById('institutionChart');
     if (!ctx) {
@@ -412,47 +412,61 @@ function createInstitutionChart(institutionData) {
         return;
     }
     
-    // Aguardar Chart.js estar disponível
-    const waitForChart = () => {
-        if (typeof Chart === 'undefined') {
-            console.log('⏳ Aguardando Chart.js...');
-            setTimeout(waitForChart, 100);
-            return;
-        }
-        
-        // Dados reais das INSTITUIÇÕES COLABORADORAS (baseado na coluna "Tipo de autor")
-        const chartData = {
-            labels: [
-                'COALIZÃO BRASIL, CLIMA, FLORESTAS E AGRICULTURA',
-                'Ibá - Indústria Brasileira de Árvores',
-                'Instituto de Engenharia',
-                'DECEIIS/SECTICS/Ministério da Saúde',
-                'ASSOBIO',
-                'Coletiva',
-                'Grupo de Trabalho de Bioindústria (Diálogos - Manaus)',
-                'Iniciativa Amazônia+10',
-                'CNI - Confederação Nacional da Indústria',
-                'SocioBio',
-                'ABIHV – Associação Brasileira da Indústria do Hidrogênio Verde',
-                'BRASKEM',
-                'Outras Instituições'
-            ],
-            datasets: [{
-                data: [74, 56, 51, 37, 30, 29, 28, 28, 16, 16, 13, 8, 42],
+    // Carregar dados das colaborações coletivas
+    fetch('colaboracoes_coletivas.json')
+        .then(response => response.json())
+        .then(colaboracoes => {
+            createChartWithData(colaboracoes);
+        })
+        .catch(error => {
+            console.error('Erro ao carregar colaborações:', error);
+            // Fallback para dados hardcoded
+            createChartWithData([
+                { nome: 'COALIZÃO BRASIL, CLIMA, FLORESTAS E AGRICULTURA', contribuicoes: 74 },
+                { nome: 'Diálogos Regionais', contribuicoes: 61 },
+                { nome: 'Ibá - Indústria Brasileira de Árvores', contribuicoes: 56 },
+                { nome: 'Instituto de Engenharia', contribuicoes: 51 },
+                { nome: 'DECEIIS/SECTICS/Ministério da Saúde', contribuicoes: 37 },
+                { nome: 'ASSOBIO', contribuicoes: 30 },
+                { nome: 'Iniciativa Amazônia+10', contribuicoes: 28 },
+                { nome: 'CNI - Confederação Nacional da Indústria', contribuicoes: 16 },
+                { nome: 'SocioBio', contribuicoes: 16 },
+                { nome: 'ABIHV – Associação Brasileira da Indústria do Hidrogênio Verde', contribuicoes: 13 }
+            ]);
+        });
+    
+    function createChartWithData(colaboracoes) {
+        // Aguardar Chart.js estar disponível
+        const waitForChart = () => {
+            if (typeof Chart === 'undefined') {
+                console.log('⏳ Aguardando Chart.js...');
+                setTimeout(waitForChart, 100);
+                return;
+            }
+            
+            // Preparar dados para o gráfico
+            const chartData = {
+                labels: colaboracoes.map(c => c.nome),
+                datasets: [{
+                    data: colaboracoes.map(c => c.contribuicoes),
                 backgroundColor: [
                     '#2d5016', // Verde escuro - COALIZÃO
+                    '#8b5a2b', // Marrom - Diálogos
                     '#1a4731', // Verde floresta - Ibá
                     '#0d9488', // Verde água - Instituto Engenharia
                     '#059669', // Verde esmeralda - Ministério Saúde
                     '#6b8e23', // Verde oliva - ASSOBIO
-                    '#8b5a2b', // Marrom - Coletiva
-                    '#4a5568', // Cinza azulado - Grupo Bioindústria
                     '#2d3748', // Cinza escuro - Iniciativa Amazônia
                     '#16a085', // Verde-azulado - CNI
                     '#27ae60', // Verde médio - SocioBio
                     '#f39c12', // Laranja - ABIHV
                     '#e74c3c', // Vermelho - BRASKEM
-                    '#95a5a6'  // Cinza claro - Outras
+                    '#4a5568', // Cinza azulado
+                    '#95a5a6', // Cinza claro
+                    '#3498db', // Azul
+                    '#9b59b6', // Roxo
+                    '#e67e22', // Laranja escuro
+                    '#34495e'  // Cinza escuro
                 ],
                 borderWidth: 2,
                 borderColor: '#ffffff'
@@ -481,7 +495,7 @@ function createInstitutionChart(institutionData) {
                                     const data = chart.data;
                                     return data.labels.map((label, i) => {
                                         const value = data.datasets[0].data[i];
-                                        const total = 428; // Total de contribuições institucionais
+                                        const total = colaboracoes.reduce((sum, c) => sum + c.contribuicoes, 0);
                                         const percentage = ((value / total) * 100).toFixed(1);
                                         
                                         // Encurtar nomes para a legenda
@@ -505,7 +519,7 @@ function createInstitutionChart(institutionData) {
                             callbacks: {
                                 label: function(context) {
                                     const value = context.raw;
-                                    const total = 428;
+                                    const total = colaboracoes.reduce((sum, c) => sum + c.contribuicoes, 0);
                                     const percentage = ((value / total) * 100).toFixed(1);
                                     return `${context.label}: ${value} contribuições (${percentage}%)`;
                                 }
@@ -562,10 +576,11 @@ function createInstitutionChart(institutionData) {
                     </div>
                 `;
             }
-        }
-    };
-    
-    waitForChart();
+            }
+        };
+        
+        waitForChart();
+    }
 }
 
 // ====== CRIAÇÃO DE WORD CLOUD ======

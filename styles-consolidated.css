@@ -314,7 +314,7 @@ body {
 .chart-canvas-container {
     padding: 1.5rem 2rem 2rem 2rem;
     position: relative;
-    height: 400px;
+    height: 550px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -653,7 +653,7 @@ body {
     }
     
     .chart-canvas-container {
-        height: 300px;
+        height: 450px;
         padding: 1rem;
     }
     
